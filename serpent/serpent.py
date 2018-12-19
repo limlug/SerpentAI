@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import os
 import sys
 import shutil
@@ -150,17 +150,17 @@ def setup_base():
     print("Installing dependencies...")
 
     if is_linux():
-        subprocess.call(shlex.split("pip install python-xlib"))
+        subprocess.call(shlex.split("pip3 install python-xlib"))
     elif is_macos():
         subprocess.call(shlex.split("pip install python-xlib pyobjc-framework-Quartz py-applescript"))
     elif is_windows():
         # Anaconda Packages
         subprocess.call(shlex.split("conda install numpy scipy scikit-image scikit-learn h5py -y"), shell=True)
 
-    subprocess.call(shlex.split("pip install -r requirements.txt"))
+    subprocess.call(shlex.split("pip3 install -r requirements.txt"))
     
     # Install Crossbar
-    subprocess.call(shlex.split("pip install crossbar==18.6.1"))
+    subprocess.call(shlex.split("pip3 install crossbar==18.6.1"))
 
     # Create Dataset Directories
     os.makedirs(os.path.join(os.getcwd(), "datasets/collect_frames"), exist_ok=True)
@@ -185,7 +185,7 @@ def setup_ocr():
     input("Press Enter to continue...")
 
     if is_unix():
-        subprocess.call(shlex.split("pip install tesserocr"))
+        subprocess.call(shlex.split("pip3 install tesserocr"))
     elif is_windows():
         subprocess.call(shlex.split("pip install pytesseract"))
 
@@ -205,7 +205,7 @@ def setup_gui():
     input("Press Enter to continue...")
 
     if is_linux():
-        subprocess.call(shlex.split("pip install Kivy==1.10.0"))
+        subprocess.call(shlex.split("pip3 install Kivy==1.10.0"))
     elif is_macos():
         subprocess.call(shlex.split("pip install pygame Kivy==1.10.0"))
     elif is_windows():
@@ -234,11 +234,11 @@ def setup_ml():
         tensorflow_backend = "CPU"
 
     if tensorflow_backend == "GPU":
-        subprocess.call(shlex.split("pip install tensorflow-gpu==1.5.1"))
+        subprocess.call(shlex.split("pip3 install tensorflow-gpu==1.5.1"))
     elif tensorflow_backend == "CPU":
-        subprocess.call(shlex.split("pip install tensorflow==1.5.1"))
+        subprocess.call(shlex.split("pip3 install tensorflow==1.5.1"))
 
-    subprocess.call(shlex.split("pip install Keras tensorforce==0.3.5.1"))
+    subprocess.call(shlex.split("pip3 install Keras tensorforce==0.3.5.1"))
 
     print("")
     print("ML module setup complete!")
@@ -274,18 +274,18 @@ def setup_dashboard():
 
     # Install Kivy
     if is_linux():
-        subprocess.call(shlex.split("pip install Kivy==1.10.0"))
+        subprocess.call(shlex.split("pip3 install Kivy==1.10.0"))
     elif is_macos():
-        subprocess.call(shlex.split("pip install pygame Kivy==1.10.0"))
+        subprocess.call(shlex.split("pip3 install pygame Kivy==1.10.0"))
     elif is_windows():
-        subprocess.call(shlex.split("pip install docutils pygments pypiwin32 kivy.deps.sdl2 kivy.deps.glew"))
-        subprocess.call(shlex.split("pip install Kivy==1.10.0"))
+        subprocess.call(shlex.split("pip3 install docutils pygments pypiwin32 kivy.deps.sdl2 kivy.deps.glew"))
+        subprocess.call(shlex.split("pip3 install Kivy==1.10.0"))
 
     # Install CEFPython
-    subprocess.call(shlex.split("pip install cefpython3==57.1"))
+    subprocess.call(shlex.split("pip3 install cefpython3==57.1"))
 
     # Install Pony ORM
-    subprocess.call(shlex.split("pip install pony==0.7.3"))
+    subprocess.call(shlex.split("pip3 install pony==0.7.3"))
 
 
 # TODO: Bring this up to date for dev branch
@@ -296,7 +296,7 @@ def update():
 
     print("Updating Serpent.AI to the latest version...")
 
-    subprocess.call(shlex.split("pip install --upgrade SerpentAI"))
+    subprocess.call(shlex.split("pip3 install --upgrade SerpentAI"))
 
     if is_linux():
         shutil.copy(
@@ -314,7 +314,7 @@ def update():
             os.path.join(os.getcwd(), "requirements.txt")
         )
 
-    subprocess.call(shlex.split("pip install -r requirements.txt"))
+    subprocess.call(shlex.split("pip3 install -r requirements.txt"))
 
     import yaml
 
